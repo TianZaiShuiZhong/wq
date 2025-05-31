@@ -8,7 +8,7 @@
 - YOLOv5版本: v7.0 (commit 915bbf2)
 
 ##### 1.下载python3.8.2
-##### 2.创建纯净虚拟环境
+##### 2.创建虚拟环境
 python -m venv yolov5_final
 call yolov5_final\Scripts\activate
 
