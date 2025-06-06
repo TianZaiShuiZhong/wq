@@ -22,6 +22,12 @@ git clone --depth 1 https://github.com/TianZaiShuiZhong/wq
 ```
 
 ### 2. 安装Python依赖
+安装依赖前注意pip版本
+过低可能报错，可以使用命令更新：
+```bash
+pip install --upgrade pip
+```
+安装依赖
 ```bash
 # 推荐方式（使用依赖清单）📦：
 pip install -r src/requirements.txt
@@ -84,9 +90,9 @@ python main.py [参数]
 ## 🏆 五、最佳实践提示
 
 ### 1. 路径处理技巧
-- 🖼️ **待检测图片**：放在`src/test/imgs/`
-- 💾 **结果保存**：到`src/test/end/`
-- 🔍 **路径问题**：推荐使用**绝对路径**避免歧义
+-  **待检测图片**：放在`src/test/imgs/`
+-  **结果保存**：到`src/test/end/`
+-  **路径问题**：推荐使用**绝对路径**避免歧义
    ```bash
    # macOS/Linux示例
    python main.py --image /User/project/src/test/imgs/1.png
@@ -103,12 +109,10 @@ python main.py [参数]
   ```
 
 ### 4. 其他注意事项
-- ✅ 首次运行时自动创建输出目录
-- 🖼️ 支持常见图片格式：JPG/PNG/BMP等
+-  支持常见图片格式：JPG/PNG/BMP等
 - 🔄 同名输出文件会被覆盖
 - ❗ `--image`和`--folder`参数互斥，不要同时使用！
 
 ---
-
-💡 **成功提示**：当终端显示"Processing completed! Results saved at..."表示处理成功！  
+可以创建python虚拟环境，使用python3.8
 🛠️ **问题排查**：遇到错误时，检查文件路径是否正确、依赖是否安装完整。
