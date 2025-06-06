@@ -1,27 +1,34 @@
 # 🚀 项目启动流程指南
 
-## 📂 项目结构说明
+## 📂 项目代码结构说明
 
 ```
 .
 ├── src/                    # 核心代码目录
 │   ├── process.py          # 🔧 图像处理模块
-│   ├── requirements.txt    # 📋 Python依赖清单
+│   ├── requirements.txt    # 📋 依赖
 │   └── test/               # 🧪 测试目录
 │       ├── imgs/           # [📷 待检测图片存放位置]
 │       └── end/            # [💾 推理结果输出目录]
-├── best.onnx               # 🤖 默认ONNX模型文件
+├── best.onnx               # 🤖  ONNX模型文件
 └── main.py                 # 🚀 主执行入口
 ```
+详细模型训练过程、代码解释将在doc文件夹中
 
 ## ⚙️ 二、环境准备步骤
 
 ### 1. 克隆项目仓库
 ```bash
-git clone https://github.com/TianZaiShuiZhong/wq
+git clone --depth 1 https://github.com/TianZaiShuiZhong/wq
 ```
 
 ### 2. 安装Python依赖
+安装依赖前注意pip版本
+过低可能报错，可以使用命令更新：
+```bash
+pip install --upgrade pip
+```
+安装依赖
 ```bash
 # 推荐方式（使用依赖清单）📦：
 pip install -r src/requirements.txt
@@ -32,28 +39,28 @@ pip install onnxruntime opencv-python numpy Pillow
 
 > 💡 提示：
 > 可以在python虚拟环境中安装依赖
-> python -m venv name
-> source name/bin/activate
-> 建议用python 3.8.2，比较稳定
+>   python -m venv name
+>   source name/bin/activate
+>   建议用python 3.8.2，比较稳定
 
 ## 🖼️ 三、文件准备指引
 
-1. 📂 将待检测图片放入指定位置：  
+1. 📂 将待检测图片放入指定文件夹位置：  
    `src/test/imgs/`  
-   (首次运行时会自动创建目录)
+   
    
 2. 💾 推理结果将输出到：  
    `src/test/end/`  
-   (目录不存在时将自动创建)
+
 
 ## 🎯 四、执行命令
 
 ```bash
 # 1. 单图片处理（指定置信度）📸
-python main.py --image test/imgs/3.jpg --output test/end/result.jpg --confidence 0.7
+python main.py --image test/imgs/3.jpg --output test/end/result.jpg --confidence 0.5
 
 # 2. 批量处理文件夹 📂
-python main.py --folder test/imgs --output test/end --confidence 0.75
+python main.py --folder test/imgs --output test/end --confidence 0.5
 
 # 3. 使用自定义模型 🤖
 python main.py --image test.jpg --output custom_result.jpg --model custom.onnx
@@ -84,9 +91,9 @@ python main.py [参数]
 ## 🏆 五、最佳实践提示
 
 ### 1. 路径处理技巧
-- 🖼️ **待检测图片**：放在`src/test/imgs/`
-- 💾 **结果保存**：到`src/test/end/`
-- 🔍 **路径问题**：推荐使用**绝对路径**避免歧义
+-  **待检测图片**：放在`src/test/imgs/`
+-  **结果保存**：到`src/test/end/`
+-  **路径问题**：推荐使用**绝对路径**避免歧义
    ```bash
    # macOS/Linux示例
    python main.py --image /User/project/src/test/imgs/1.png
@@ -103,12 +110,10 @@ python main.py [参数]
   ```
 
 ### 4. 其他注意事项
-- ✅ 首次运行时自动创建输出目录
-- 🖼️ 支持常见图片格式：JPG/PNG/BMP等
+-  支持常见图片格式：JPG/PNG/BMP等
 - 🔄 同名输出文件会被覆盖
 - ❗ `--image`和`--folder`参数互斥，不要同时使用！
 
 ---
-
-💡 **成功提示**：当终端显示"Processing completed! Results saved at..."表示处理成功！  
+可以创建python虚拟环境，使用python3.8
 🛠️ **问题排查**：遇到错误时，检查文件路径是否正确、依赖是否安装完整。
