@@ -38,13 +38,13 @@ pip install onnxruntime opencv-python numpy Pillow
 
 ## 🖼️ 三、文件准备指引
 
-1. 📂 将待检测图片放入指定位置：  
+1. 📂 将待检测图片放入指定文件夹位置：  
    `src/test/imgs/`  
-   (首次运行时会自动创建目录)
+   
    
 2. 💾 推理结果将输出到：  
    `src/test/end/`  
-   (目录不存在时将自动创建)
+
 
 ## 🎯 四、执行命令
 
