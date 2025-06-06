@@ -32,9 +32,9 @@ pip install onnxruntime opencv-python numpy Pillow
 
 > 💡 提示：
 > 可以在python虚拟环境中安装依赖
-> python -m venv name
-> source name/bin/activate
-> 建议用python 3.8.2，比较稳定
+>   python -m venv name
+>   source name/bin/activate
+>   建议用python 3.8.2，比较稳定
 
 ## 🖼️ 三、文件准备指引
 
