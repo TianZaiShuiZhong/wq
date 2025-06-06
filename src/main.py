@@ -44,7 +44,7 @@ def process_folder(detector, input_folder, output_folder, confidence):
                 f.write('{' + 
                     f'"x": {det["x"]}, "y": {det["y"]}, ' +
                     f'"w": {det["w"]}, "h": {det["h"]}, ' +
-                    f'"置信度": {det["confidence"]}' + 
+                    f'"Confidence": {det["confidence"]}' + 
                     '}')
                 if j < len(detections)-1:
                     f.write(', ')
