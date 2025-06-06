@@ -18,7 +18,7 @@
 
 ### 1. 克隆项目仓库
 ```bash
-git clone https://github.com/TianZaiShuiZhong/wq
+git clone --depth 1 https://github.com/TianZaiShuiZhong/wq
 ```
 
 ### 2. 安装Python依赖
