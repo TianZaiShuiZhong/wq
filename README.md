@@ -18,7 +18,7 @@
 
 ### 1. 克隆项目仓库
 ```bash
-git clone <项目仓库地址>
+git clone https://github.com/TianZaiShuiZhong/wq
 ```
 
 ### 2. 安装Python依赖
@@ -30,7 +30,11 @@ pip install -r src/requirements.txt
 pip install onnxruntime opencv-python numpy Pillow
 ```
 
-> 💡 提示：使用requirements.txt可确保依赖版本一致性！
+> 💡 提示：
+> 可以在python虚拟环境中安装依赖
+> python -m venv name
+> source name/bin/activate
+> 建议用python 3.8.2，比较稳定
 
 ## 🖼️ 三、文件准备指引
 
@@ -91,20 +95,12 @@ python main.py [参数]
    python main.py --image D:\\project\\src\\test\\imgs\\1.png
    ```
 
-### 2. 置信度设置建议 🎚️
-| 场景             | 建议区间  | 效果               |
-|------------------|----------|---------------------|
-| 高精度要求       | 0.7~0.9  | 🔍 减少误检         |
-| 常规检测         | 0.5~0.7  | ⚖️ 平衡精度与速度   |
-| 快速扫描         | 0.3~0.5  | ⚡ 提高召回率       |
-
 ### 3. 模型选择提示
-- 🤖 默认使用当前目录的`best.onnx`
-- 🔧 自定义模型需提供完整路径：
+-  默认使用当前目录的`best.onnx`
+-  自定义模型需提供完整路径：
   ```bash
   python main.py --model models/custom.onnx
   ```
-- 💾 建议将大模型文件放在专门目录（如`models/`）
 
 ### 4. 其他注意事项
 - ✅ 首次运行时自动创建输出目录
