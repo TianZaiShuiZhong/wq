@@ -92,8 +92,8 @@ python main.py [参数]
    ```
 
 ### 3. 模型选择提示
-- 🤖 默认使用当前目录的`best.onnx`
-- 🔧 自定义模型需提供完整路径：
+-  默认使用当前目录的`best.onnx`
+-  自定义模型需提供完整路径：
   ```bash
   python main.py --model models/custom.onnx
   ```
