@@ -99,11 +99,11 @@ class TennisDetector:
                     
                     if w > 0 and h > 0:  # 确保宽高有效
                         detections.append({
-                            'x': x,
-                            'y': y,
-                            'w': w,
-                            'h': h,
-                            'confidence': float(conf)
+                            'x': int(x),
+                            'y': int(y), 
+                            'w': int(w),
+                            'h': int(h),
+                            'confidence': round(float(conf), 4)
                         })
         
         # 应用非极大值抑制
@@ -128,35 +128,3 @@ def init_detector(model_path: str, confidence: float = 0.25, log_level: str = "I
 
 def process_img(detector, img_path: str) -> List[Dict]:
     return detector.predict(img_path)
-
-#
-#以下代码仅作为选手测试代码时使用，仅供参考，可以随意修改
-#但是最终提交代码后，process.py文件是作为模块进行调用，而非作为主程序运行
-#因此提交时请根据情况删除不必要的额外代码
-#
-if __name__=='__main__':
-    imgs_folder = './imgs/'
-    img_paths = os.listdir(imgs_folder)
-    def now():
-        return int(time.time()*1000)
-    last_time = 0
-    count_time = 0
-    max_time = 0
-    min_time = now()
-    for img_path in img_paths:
-        print(img_path,':')
-        last_time = now()
-        result = process_img(imgs_folder+img_path)
-        run_time = now() - last_time
-        print('result:\n',result)
-        print('run time: ', run_time, 'ms')
-        print()
-        count_time += run_time
-        if run_time > max_time:
-            max_time = run_time
-        if run_time < min_time:
-            min_time = run_time
-    print('\n')
-    print('avg time: ',int(count_time/len(img_paths)),'ms')
-    print('max time: ',max_time,'ms')
-    print('min time: ',min_time,'ms')

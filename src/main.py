@@ -35,17 +35,30 @@ def process_folder(detector, input_folder, output_folder, confidence):
     # 保存所有结果到一个TXT文件
     output_txt = os.path.join(output_folder, 'detections.txt')
     with open(output_txt, 'w') as f:
-        # 使用json.dumps确保格式正确，然后替换引号为单引号以匹配示例
-        json_str = json.dumps(results, indent=4)
-        json_str = json_str.replace('"', "'")
-        f.write(json_str)
+        # 生成紧凑格式的JSON输出
+        f.write('{\n')
+        for i, (filename, detections) in enumerate(results.items()):
+            f.write(f'    "{filename}": [')
+            for j, det in enumerate(detections):
+                f.write('{' + 
+                    f'"x": {det["x"]}, "y": {det["y"]}, ' +
+                    f'"w": {det["w"]}, "h": {det["h"]}, ' +
+                    f'"confidence": {det["confidence"]}' + 
+                    '}')
+                if j < len(detections)-1:
+                    f.write(', ')
+            f.write(']')
+            if i < len(results)-1:
+                f.write(',')
+            f.write('\n')
+        f.write('}\n')
 
 def main():
     parser = argparse.ArgumentParser(description='网球检测系统')
     parser.add_argument('--image', help='输入图片路径')
     parser.add_argument('--folder', help='输入文件夹路径')
     parser.add_argument('--output', required=True, help='输出路径')
-    parser.add_argument('--model', default='best.onnx', help='模型路径')
+    parser.add_argument('--model', default='src/best.onnx', help='模型路径')
     parser.add_argument('--confidence', type=float, default=0.05, help='检测置信度阈值')
     args = parser.parse_args()
 
