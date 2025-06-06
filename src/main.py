@@ -35,7 +35,8 @@ def process_folder(detector, input_folder, output_folder, confidence):
     # 保存所有结果到一个TXT文件
     output_txt = os.path.join(output_folder, 'detections.txt')
     with open(output_txt, 'w') as f:
-        # 生成紧凑格式的JSON输出
+        # 生成txt输出
+        # 按照大小排序
         f.write('{\n')
         for i, (filename, detections) in enumerate(results.items()):
             f.write(f'    "{filename}": [')
