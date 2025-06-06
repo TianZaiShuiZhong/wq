@@ -57,10 +57,10 @@ pip install onnxruntime opencv-python numpy Pillow
 
 ```bash
 # 1. 单图片处理（指定置信度）📸
-python main.py --image test/imgs/3.jpg --output test/end/result.jpg --confidence 0.7
+python main.py --image test/imgs/3.jpg --output test/end/result.jpg --confidence 0.5
 
 # 2. 批量处理文件夹 📂
-python main.py --folder test/imgs --output test/end --confidence 0.75
+python main.py --folder test/imgs --output test/end --confidence 0.5
 
 # 3. 使用自定义模型 🤖
 python main.py --image test.jpg --output custom_result.jpg --model custom.onnx
