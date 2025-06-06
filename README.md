@@ -42,7 +42,19 @@ pip install onnxruntime opencv-python numpy Pillow
    `src/test/end/`  
    (目录不存在时将自动创建)
 
-## 🎯 四、执行命令手册
+## 🎯 四、执行命令
+
+```bash
+# 1. 单图片处理（指定置信度）📸
+python main.py --image test/imgs/3.jpg --output test/end/result.jpg --confidence 0.7
+
+# 2. 批量处理文件夹 📂
+python main.py --folder test/imgs --output test/end --confidence 0.75
+
+# 3. 使用自定义模型 🤖
+python main.py --image test.jpg --output custom_result.jpg --model custom.onnx
+```
+
 
 ### 基础格式
 ```bash
@@ -64,18 +76,6 @@ python main.py [参数]
 > △：互斥参数（与对应参数二选一）  
 > ✕：可选参数  
 
-### 💡 典型执行案例
-
-```bash
-# 1. 单图片处理（指定置信度）📸
-python main.py --image test/imgs/3.jpg --output test/end/result.jpg --confidence 0.7
-
-# 2. 批量处理文件夹 📂
-python main.py --folder test/imgs --output test/end --confidence 0.75
-
-# 3. 使用自定义模型 🤖
-python main.py --image test.jpg --output custom_result.jpg --model custom.onnx
-```
 
 ## 🏆 五、最佳实践提示
 
