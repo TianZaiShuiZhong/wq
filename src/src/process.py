@@ -138,7 +138,6 @@ def process_img(img_path: str) -> List[Dict]:
             'x': 左上角x坐标,
             'y': 左上角y坐标,
             'w': 宽度,
-            'h': 高度,
-            'confidence': 置信度
+            'h': 高度
         }
 """
