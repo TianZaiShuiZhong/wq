@@ -55,7 +55,7 @@ def process_folder(detector, input_folder, output_folder, confidence):
         f.write('}\n')
 
 def main():
-    parser = argparse.ArgumentParser(description='网球检测系统')
+    parser = argparse.ArgumentParser(description='网球检测')
     parser.add_argument('--image', help='输入图片路径')
     parser.add_argument('--folder', help='输入文件夹路径')
     parser.add_argument('--output', required=True, help='输出路径')

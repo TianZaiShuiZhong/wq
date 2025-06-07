@@ -31,12 +31,10 @@ def non_max_suppression(boxes, iou_threshold=0.5):
     while boxes:
         current = boxes.pop(0)
         keep.append(current)
-        
         boxes = [
             box for box in boxes 
             if calculate_iou(current, box) < iou_threshold
         ]
-    
     return keep
 
 class TennisDetector:
@@ -72,7 +70,6 @@ class TennisDetector:
         detections = []
         if len(outputs) > 0:
             print(f"输出形状: {[o.shape for o in outputs]}")  # 调试输出
-            
             # 使用第一个输出(25200x6)
             output = outputs[0][0]  # 去掉batch维度
             for detection in output:
@@ -84,13 +81,11 @@ class TennisDetector:
                     y_center = y / 640 * img_height
                     width = w / 640 * img_width
                     height = h / 640 * img_height
-                    
                     # 转换为左上角坐标
                     x = int(x_center - width/2)
                     y = int(y_center - height/2)
                     w = int(width)
                     h = int(height)
-                    
                     # 确保坐标在合理范围内
                     x = max(0, min(x, img_width-1))
                     y = max(0, min(y, img_height-1))
@@ -105,10 +100,8 @@ class TennisDetector:
                             'h': int(h),
                             'confidence': round(float(conf), 4)
                         })
-        
         # 应用非极大值抑制
         detections = non_max_suppression(detections, iou_threshold=0.5)
-        
         # 按面积从大到小排序
         detections.sort(key=lambda x: x['w'] * x['h'], reverse=True)
         return detections
