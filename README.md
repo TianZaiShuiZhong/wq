@@ -54,6 +54,7 @@ pip install onnxruntime opencv-python numpy Pillow
 
 
 ## 🎯 四、执行命令
+执行命令前，要在main.py文件的当前目录下
 
 ```bash
 # 1. 单图片处理（指定置信度）📸
