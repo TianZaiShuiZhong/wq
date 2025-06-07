@@ -5,7 +5,7 @@ from src.process import init_detector, process_img
 
 def process_single_image(detector, image_path, output_path):
     """处理单张图片"""
-    detections = process_img(detector, image_path)
+    detections = process_img(image_path)
     
     # 保存结果
     result = {os.path.basename(image_path): detections}
@@ -26,7 +26,7 @@ def process_folder(detector, input_folder, output_folder, confidence):
             image_path = os.path.join(input_folder, filename)
             output_path = os.path.join(output_folder, f"result_{filename}")
             
-            detections = process_img(detector, image_path)
+            detections = process_img(image_path)
             results[filename] = detections
             
             # 可视化结果
@@ -44,7 +44,7 @@ def process_folder(detector, input_folder, output_folder, confidence):
                 f.write('{' + 
                     f'"x": {det["x"]}, "y": {det["y"]}, ' +
                     f'"w": {det["w"]}, "h": {det["h"]}, ' +
-                    f'"Confidence": {det["confidence"]}' + 
+                    # f'"Confidence": {det["confidence"]}' + 
                     '}')
                 if j < len(detections)-1:
                     f.write(', ')
@@ -59,7 +59,7 @@ def main():
     parser.add_argument('--image', help='输入图片路径')
     parser.add_argument('--folder', help='输入文件夹路径')
     parser.add_argument('--output', required=True, help='输出路径')
-    parser.add_argument('--model', default='best.onnx', help='模型路径')
+    parser.add_argument('--model', default='src/best.onnx', help='模型路径')
     parser.add_argument('--confidence', type=float, default=0.05, help='检测置信度阈值')
     args = parser.parse_args()
 

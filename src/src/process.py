@@ -119,5 +119,26 @@ class TennisDetector:
 def init_detector(model_path: str, confidence: float = 0.25, log_level: str = "INFO"):
     return TennisDetector(model_path, confidence)
 
-def process_img(detector, img_path: str) -> List[Dict]:
-    return detector.predict(img_path)
+def process_img(img_path: str) -> List[Dict]:
+
+    # 初始化检测器(单例模式)
+    if not hasattr(process_img, 'detector'):
+        process_img.detector = init_detector('src/best.onnx', confidence=0.7)
+    
+    return process_img.detector.predict(img_path)
+
+"""处理单张图片并返回检测结果
+    
+    参数:
+        img_path: 要识别的图片路径
+        
+    返回:
+        网球检测结果列表，每个检测结果包含:
+        {
+            'x': 左上角x坐标,
+            'y': 左上角y坐标,
+            'w': 宽度,
+            'h': 高度,
+            'confidence': 置信度
+        }
+"""
