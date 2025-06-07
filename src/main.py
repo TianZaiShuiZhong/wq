@@ -59,7 +59,7 @@ def main():
     parser.add_argument('--image', help='输入图片路径')
     parser.add_argument('--folder', help='输入文件夹路径')
     parser.add_argument('--output', required=True, help='输出路径')
-    parser.add_argument('--model', default='src/best.onnx', help='模型路径')
+    parser.add_argument('--model', default='best.onnx', help='模型路径')
     parser.add_argument('--confidence', type=float, default=0.05, help='检测置信度阈值')
     args = parser.parse_args()
 
