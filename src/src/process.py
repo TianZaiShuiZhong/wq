@@ -24,8 +24,8 @@ def non_max_suppression(boxes, iou_threshold=0.5):
     if len(boxes) == 0:
         return []
     
-    # 按置信度从高到低排序
-    boxes = sorted(boxes, key=lambda x: x['confidence'], reverse=True)
+    # 按面积从大到小排序
+    boxes = sorted(boxes, key=lambda x: x['w'] * x['h'], reverse=True)
     
     keep = []
     while boxes:
@@ -97,8 +97,7 @@ class TennisDetector:
                             'x': int(x),
                             'y': int(y), 
                             'w': int(w),
-                            'h': int(h),
-                            'confidence': round(float(conf), 4)
+                            'h': int(h)
                         })
         # 应用非极大值抑制
         detections = non_max_suppression(detections, iou_threshold=0.5)
@@ -111,9 +110,6 @@ class TennisDetector:
         for box in boxes:
             x, y, w, h = box['x'], box['y'], box['w'], box['h']
             cv2.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0), 2)
-            cv2.putText(img, f"{box['confidence']:.2f}", 
-                       (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 
-                       0.5, (0, 255, 0), 2)
         cv2.imwrite(output_path, img)
 
 def init_detector(model_path: str, confidence: float = 0.25, log_level: str = "INFO"):
