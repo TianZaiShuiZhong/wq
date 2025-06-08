@@ -6,9 +6,18 @@ from src.process import init_detector, process_img
 def process_single_image(detector, image_path, output_path):
     """处理单张图片"""
     detections = process_img(image_path)
+
+    filtered_detections = []
+    for det in detections:
+        filtered_detections.append({
+            "x": det["x"],
+            "y": det["y"],
+            "w": det["w"],
+            "h": det["h"]
+        })
     
     # 保存结果
-    result = {os.path.basename(image_path): detections}
+    result = {os.path.basename(image_path): filtered_detections}
     with open(output_path.replace('.jpg', '.txt'), 'w') as f:
         json.dump(result, f, indent=2)
 
