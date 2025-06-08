@@ -28,7 +28,7 @@ def process_folder(detector, input_folder, output_folder, confidence):
     """处理整个文件夹"""
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
-    
+     
     results = {}
     for filename in os.listdir(input_folder):
         if filename.lower().endswith(('.jpg', '.jpeg', '.png')):
