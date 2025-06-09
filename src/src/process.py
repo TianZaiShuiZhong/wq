@@ -123,7 +123,7 @@ def process_img(img_path: str) -> List[Dict]:
     
     return process_img.detector.predict(img_path)
 
-"""处理单张图片并返回检测结果
+"""
     
     参数:
         img_path: 要识别的图片路径
