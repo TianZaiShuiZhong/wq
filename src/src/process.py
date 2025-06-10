@@ -117,7 +117,7 @@ def init_detector(model_path: str, confidence: float = 0.25, log_level: str = "I
 
 def process_img(img_path: str) -> List[Dict]:
 
-    # 初始化检测器(单例模式)
+    # 初始化检测器(单例模式)，避免重复加载模型
     if not hasattr(process_img, 'detector'):
         process_img.detector = init_detector('src/best.onnx', confidence=0.7)
     
